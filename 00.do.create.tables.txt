@@ -1,0 +1,26 @@
+j
+
+CREATE TABLE "like" (
+  "id" SERIAL PRIMARY KEY,
+  "user" INTEGER NOT NULL
+);
+
+CREATE INDEX "idx_like__user" ON "like" ("user");
+
+ALTER TABLE "like" ADD CONSTRAINT "fk_like__user" FOREIGN KEY ("user") REFERENCES "user" ("id") ON DELETE CASCADE;
+
+CREATE TABLE "song" (
+  "id" SERIAL PRIMARY KEY,
+  "title" TEXT NOT NULL,
+  "location" TEXT NOT NULL,
+  "user" INTEGER NOT NULL,
+  "like" INTEGER NOT NULL
+);
+
+CREATE INDEX "idx_song__like" ON "song" ("like");
+
+CREATE INDEX "idx_song__user" ON "song" ("user");
+
+ALTER TABLE "song" ADD CONSTRAINT "fk_song__like" FOREIGN KEY ("like") REFERENCES "like" ("id") ON DELETE CASCADE;
+
+ALTER TABLE "song" ADD CONSTRAINT "fk_song__user" FOREIGN KEY ("user") REFERENCES "user" ("id") ON DELETE CASCADE
