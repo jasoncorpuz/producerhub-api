@@ -1,21 +1,45 @@
 const SongService = {
-    getAllSongs(db){
+    getAllSongs(db) {
         return db
-         .from('songs')
-         .select('*')
+            .from('songs')
+            .select(
+                'songs.id as id',
+                'title',
+                'user_id',
+                'location',
+                'users.username as username',
+                'description'
+            )
+            .join('users', 'users.id', 'songs.user_id')
     },
     getSongById(db, id) {
         return db
-         .from('songs')
-         .where('id', id)
-         .select('*')
+            .from('songs')
+            .where('id', id)
+            .select(
+                'songs.id as id',
+                'title',
+                'user_id',
+                'location',
+                'users.username as username',
+                'description'
+            )
+            .join('users', 'users.id', 'songs.user_id')
         //  .join('users', 'users.id', 'songs.user_id')
     },
     getSongByUser(db, userId) {
         return db
-         .from('songs')
-         .where('user_id', userId)
-         .select('*')
+            .from('songs')
+            .where('user_id', userId)
+            .select(
+                'songs.id as id',
+                'title',
+                'user_id',
+                'location',
+                'users.username as username',
+                'description'
+            )
+            .join('users', 'users.id', 'songs.user_id')
     }
 }
 

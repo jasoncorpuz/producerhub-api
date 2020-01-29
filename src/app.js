@@ -10,6 +10,7 @@ const uploadRouter = require('./upload/upload')
 const userRouter = require('./user/user-router')
 const songRouter = require('./song/song-router')
 const likesRouter = require('./likes/likes-router')
+const authRouter = require('./auth/auth-router')
 
 const app = express()
 
@@ -30,6 +31,7 @@ app.use('/api/upload', uploadRouter)
 app.use('/api/users' , userRouter)
 app.use('/api/songs', songRouter)
 app.use('/api/likes', likesRouter)
+app.use('/api/auth', authRouter)
 
 app.get('/', (req, res) => {
     res.send('Hello, world!')
