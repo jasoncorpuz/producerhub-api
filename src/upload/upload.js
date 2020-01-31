@@ -60,15 +60,16 @@ uploadRouter
                         console.log(err);
                     }
                     location = data.Location;
-                    console.log(location);
+                    
                     //store this in database
-                });
+                    res.status(200).json({
+                        location: location
+                    })
+                }); 
             });
-        });
-        req.pipe(busboy);
-        res.status(200).json({
-            location: location
         })
+        req.pipe(busboy);
+        console.log(location)
 
 
     })

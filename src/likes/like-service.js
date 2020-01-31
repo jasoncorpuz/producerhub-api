@@ -17,6 +17,13 @@ const LikeService =  {
         return db
          .from('likes')
          .select('*')
+    },
+    postLike(db, like) {
+        return db
+         .into('likes')
+         .insert(like)
+         .returning('*')
+         .then(rows => rows[0])
     }
 }
 

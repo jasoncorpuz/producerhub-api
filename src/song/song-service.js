@@ -40,6 +40,13 @@ const SongService = {
                 'description'
             )
             .join('users', 'users.id', 'songs.user_id')
+    },
+    postSong(db, song) {
+        return db
+         .insert(song)
+         .into('songs')
+         .returning('*')
+         .then(rows => rows[0])
     }
 }
 

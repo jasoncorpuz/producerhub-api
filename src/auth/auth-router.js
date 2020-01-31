@@ -20,7 +20,7 @@ authRouter
             loginUser.username
         )
             .then(dbUser => {
-                console.log(dbUser)
+                
                 if (!dbUser) 
                     return res.status(401).json({
                         error: 'Incorrect username or password',
@@ -28,7 +28,7 @@ authRouter
 
                 return AuthService.comparePasswords(loginUser.password, dbUser.password)
                     .then(compareMatch => {
-                        console.log(compareMatch)
+                        
                         if (!compareMatch)
                             return res.status(400).json({
                                 error: 'Incorrect username or password',
@@ -36,7 +36,7 @@ authRouter
                         req.user = dbUser
                         const sub = dbUser.username
                         const payload = { user_id: dbUser.id }
-                        console.log(payload)
+                        console.log(req.user)
                         res.send({
                             authToken: AuthService.createJwt(sub, payload),
                             id: dbUser.id
