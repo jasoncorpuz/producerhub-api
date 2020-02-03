@@ -12,6 +12,19 @@ likesRouter
             .then(likes => res.json(likes))
     })
 
+likesRouter 
+    .route('/:id')
+    .delete((req,res,next) => {
+        const likeId = req.params.id
+        const knex = req.app.get('db')
+
+        LikesService.deleteLike(knex,likeId)
+         .then(numRowsAffect => {
+             res.status(204).end()
+         })
+         .catch(next)
+    })
+
 likesRouter
     .get('/user/:userId', (req, res, next) => {
         const knex = req.app.get('db')
@@ -62,7 +75,9 @@ likesRouter
 
         LikesService.postLike(knex, like)
             .then(r => {
-                return res.status(200)
+                return res.status(200).json({
+                    response: r
+                })
             })
             .catch(next)
     })

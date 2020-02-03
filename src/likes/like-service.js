@@ -24,6 +24,11 @@ const LikeService =  {
          .insert(like)
          .returning('*')
          .then(rows => rows[0])
+    },
+    deleteLike(db, id) {
+        return db('likes')
+         .where('likes.id', id)
+         .delete()
     }
 }
 
