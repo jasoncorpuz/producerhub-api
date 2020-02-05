@@ -6,9 +6,9 @@ const AWS = require('aws-sdk')
 
 const uploadRouter = express.Router()
 
-const BUCKET_NAME = process.env.BUCKET_NAME;
-const IAM_USER_KEY = process.env.IAM_USER_KEY;
-const IAM_USER_SECRET = process.env.IAM_USER_SECRET;
+const BUCKET_NAME = 'test-300'
+const IAM_USER_KEY = 'AKIAUESC257KEPPXM3NI'
+const IAM_USER_SECRET = 'NpRpbK7fqUvR5UC1wO6M/h5j1sbg8Gf8WZ14KGd8'
 
 // The following is an example of making file upload with 
 // additional body parameters.
