@@ -68,7 +68,7 @@ songRouter
     SongService.postSong(knex, newSong)
      .then(song => {
        return res.status(201).json({
-         success: 'oh ya!'
+         song
        })
      })
     
