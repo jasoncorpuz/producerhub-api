@@ -33,19 +33,22 @@ function makeSongsArray(){
       id: 1,
       title: 'test title',
       location: 'somelocation.com',
-      user_id: 1
+      user_id: 1, 
+      description:'Risus viverra adipiscing at in tellus integer feugiat scelerisque varius. Cursus turpis massa tincidunt dui ut ornare. Felis donec et odio pellentesque.'
     },
     {
       id: 2,
       title: 'test title',
       location: 'somelocation.com',
-      user_id: 2
+      user_id: 2, 
+      description:'Risus viverra adipiscing at in tellus integer feugiat scelerisque varius. Cursus turpis massa tincidunt dui ut ornare. Felis donec et odio pellentesque.'
     },
     {
       id: 3,
       title: 'test title',
       location: 'somelocation.com',
-      user_id: 3
+      user_id: 3, 
+      description:'Risus viverra adipiscing at in tellus integer feugiat scelerisque varius. Cursus turpis massa tincidunt dui ut ornare. Felis donec et odio pellentesque.'
     },
   ]
 }
@@ -108,7 +111,7 @@ function cleanTables(db) {
   function seedUsers(db, users) {
     const preppedUsers = users.map(user => ({
       id: user.id,
-      user_name: user.user_name,
+      username: user.username,
       password: bcrypt.hashSync(user.password, 1)
 
 

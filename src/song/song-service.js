@@ -12,10 +12,24 @@ const SongService = {
             )
             .join('users', 'users.id', 'songs.user_id')
     },
+    getNewestSongs(db) {
+        return db
+            .from('songs')
+            .orderBy('id', 'desc')
+            .select(
+                'songs.id as id',
+                'title',
+                'user_id',
+                'location',
+                'users.username as username',
+                'description'
+            )
+            .join('users', 'users.id', 'songs.user_id')
+    },
     getSongById(db, id) {
         return db
             .from('songs')
-            .where('id', id)
+            .where('songs.id', id)
             .select(
                 'songs.id as id',
                 'title',

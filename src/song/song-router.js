@@ -9,7 +9,15 @@ const jsonBodyParser = express.json()
 
 songRouter
   .get('/', (req, res, next) => {
+    const { order } = req.query
     const knex = req.app.get('db')
+
+    if (order === 'newest') {
+      console.log('newest')
+      SongService.getNewestSongs(knex)
+      .then(songs => res.json(songs))
+      .catch(next)
+    }
     SongService.getAllSongs(knex)
       .then(songs => res.json(songs))
       .catch(next)
@@ -66,12 +74,12 @@ songRouter
     }
 
     SongService.postSong(knex, newSong)
-     .then(song => {
-       return res.status(201).json({
-         success: 'oh ya!'
-       })
-     })
-    
+      .then(song => {
+        return res.status(201).json({
+          success: 'oh ya!'
+        })
+      })
+
   })
 
 

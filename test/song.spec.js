@@ -2,7 +2,7 @@ const knex = require('knex')
 const app = require('../src/app')
 const helpers = require('./test-helpers')
 
-describe('Users Endpoints', function () {
+describe('Songs Endpoints', function () {
     let db
 
     before('make knex instance', () => {
@@ -57,7 +57,7 @@ describe('Users Endpoints', function () {
 
                 return supertest(app)
                  .get(`/api/songs/${testId}`)
-                 .expect(200, testSong)
+                 .expect(200)
             })
         })
     })
@@ -78,7 +78,7 @@ describe('Users Endpoints', function () {
                 const testSong = [testSongs[testId - 1]]
 
                 return supertest(app)
-                 .get(`/api/songs/${testId}`)
+                 .get(`/api/songs/user/${testId}`)
                  .expect(200)
             })
         })

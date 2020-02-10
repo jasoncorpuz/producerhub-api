@@ -21,6 +21,7 @@ uploadRouter
     .post('/', function (req, res, next) {
         // This grabs the additional parameters so in this case passing     
         // in "element1" with a value.
+        console.log(req.body)
         const element1 = req.body.element1;
         let location = ''
         var busboy = new Busboy({ headers: req.headers });
@@ -41,6 +42,7 @@ uploadRouter
             //    }
             // }
             // Grabs your file object from the request.
+            console.log(element1)
             const file = req.files.element2;
             console.log(file);
             let s3bucket = new AWS.S3({
