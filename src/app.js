@@ -20,6 +20,12 @@ const morganOption = (NODE_ENV === 'production')
 
 app.use(morgan(morganOption))
 app.use(cors())
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
 app.use(helmet())
 
 app.use(busboy())
@@ -28,26 +34,26 @@ app.use(express.json());
 app.use(busboyBodyParser());
 
 app.use('/api/upload', uploadRouter)
-app.use('/api/users' , userRouter)
+app.use('/api/users', userRouter)
 app.use('/api/songs', songRouter)
 app.use('/api/likes', likesRouter)
 app.use('/api/auth', authRouter)
 
 app.get('/', (req, res) => {
-    res.send('Hello, world!')
+  res.send('Hello, world!')
 })
 
 
-  app.use(function errorHandler(error, req, res, next) {
-      let response
-      if (NODE_ENV === 'production') {
-        response = { error: { message: 'server error' } }
-      } else {
-        console.error(error)
-        response = { message: error.message, error }
-      }
-      res.status(500).json(response)
-    })
+app.use(function errorHandler(error, req, res, next) {
+  let response
+  if (NODE_ENV === 'production') {
+    response = { error: { message: 'server error' } }
+  } else {
+    console.error(error)
+    response = { message: error.message, error }
+  }
+  res.status(500).json(response)
+})
 
 
 module.exports = app
