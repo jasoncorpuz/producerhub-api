@@ -63,7 +63,7 @@ songRouter
   .post((req, res, next) => {
     const knex = req.app.get('db')
     const userId = req.user.id
-    // console.log(req.user.id)
+    console.log(req.user.id)
     const { title, description, location } = req.body
 
     const newSong = {

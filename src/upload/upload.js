@@ -10,13 +10,6 @@ const BUCKET_NAME = 'test-300'
 const IAM_USER_KEY = 'AKIAUESC257KEPPXM3NI'
 const IAM_USER_SECRET = 'NpRpbK7fqUvR5UC1wO6M/h5j1sbg8Gf8WZ14KGd8'
 
-// The following is an example of making file upload with 
-// additional body parameters.
-// To make a call with PostMan
-// Don't put any headers (content-type)
-// Under body:
-// check form-data
-// Put the body with "element1": "test", "element2": image file
 uploadRouter
     .post('/', function (req, res, next) {
         // This grabs the additional parameters so in this case passing     
@@ -28,20 +21,6 @@ uploadRouter
         // The file upload has completed
         busboy.on('finish', function () {
             console.log('Upload finished');
-            // Your files are stored in req.files. In this case,
-            // you only have one and it's req.files.element2:
-            // This returns:
-            // {
-            //    element2: {
-            //      data: ...contents of the file...,
-            //      name: 'Example.jpg',
-            //      encoding: '7bit',
-            //      mimetype: 'image/png',
-            //      truncated: false,
-            //      size: 959480
-            //    }
-            // }
-            // Grabs your file object from the request.
             console.log(element1)
             const file = req.files.element2;
             console.log(file);

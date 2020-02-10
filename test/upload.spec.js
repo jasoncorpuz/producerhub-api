@@ -22,12 +22,6 @@ describe('Upload Endpoint', function () {
 
     describe('post /api/upload', () =>{
         it('uploads song to cloud storage', () => {
-            // const song = uploadMe
-            // const fd = new FormData()
-    
-    
-            // fd.append('element1', ' ')
-            // fd.append('element2', song)
 
             return supertest(app)
              .post('/api/upload')
