@@ -6,10 +6,9 @@ const AWS = require('aws-sdk')
 
 const uploadRouter = express.Router()
 
-const BUCKET_NAME = 'test-300'
-// const IAM_USER_KEY = 'AKIAUESC257KEPPXM3NI'
-const IAM_USER_KEY = 'AKIAUESC257KFDS3OJFT'
-const IAM_USER_SECRET = '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'
+const BUCKET_NAME = process.env.BUCKET_NAME
+const IAM_USER_KEY = process.env.IAM_USER_KEY
+const IAM_USER_SECRET = process.env.IAM_USER_SECRET
 
 uploadRouter
     .post('/', function (req, res, next) {
