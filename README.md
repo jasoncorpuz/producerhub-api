@@ -170,7 +170,7 @@ Returns all songs by specfied user via user id.
 
 ## Upload Endpoint
 
-'POST '/upload'\
+POST '/upload'\
 Posts file to Amazon S3 Bucket.\ 
 Returns location of upload. \
 Example upload example in React (use form data)
