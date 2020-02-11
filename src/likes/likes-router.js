@@ -73,7 +73,6 @@ likesRouter
             song_id: songId
         }
 
-        console.log(like)
         LikesService.postLike(knex, like)
             .then(r => {
                 return res.status(200).json({

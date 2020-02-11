@@ -13,7 +13,6 @@ songRouter
     const knex = req.app.get('db')
 
     if (order === 'newest') {
-      console.log('newest')
       SongService.getNewestSongs(knex)
       .then(songs => res.json(songs))
       .catch(next)
@@ -63,7 +62,6 @@ songRouter
   .post((req, res, next) => {
     const knex = req.app.get('db')
     const userId = req.user.id
-    console.log(req.user.id)
     const { title, description, location } = req.body
 
     const newSong = {

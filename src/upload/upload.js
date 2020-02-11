@@ -14,16 +14,16 @@ uploadRouter
     .post('/', function (req, res, next) {
         // This grabs the additional parameters so in this case passing     
         // in "element1" with a value.
-        console.log(req.body)
+        
         const element1 = req.body.element1;
         let location = ''
         var busboy = new Busboy({ headers: req.headers });
         // The file upload has completed
         busboy.on('finish', function () {
-            console.log('Upload finished');
-            console.log(element1)
+            
+            
             const file = req.files.element2;
-            console.log(file);
+            
             let s3bucket = new AWS.S3({
                 accessKeyId: IAM_USER_KEY,
                 secretAccessKey: IAM_USER_SECRET,
@@ -50,8 +50,6 @@ uploadRouter
             });
         })
         req.pipe(busboy);
-        console.log(location)
-
 
     })
 
